@@ -30,6 +30,12 @@ export default function RootLayout({
                 <a href="/map" className="hover:text-swiss-light transition">
                   Map
                 </a>
+                <a href="/trends" className="hover:text-swiss-light transition">
+                  Trends
+                </a>
+                <a href="/query" className="hover:text-swiss-light transition">
+                  Query
+                </a>
               </div>
             </div>
           </nav>

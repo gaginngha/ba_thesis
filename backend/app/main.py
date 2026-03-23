@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import municipalities, financial, demographics, scores
+from app.api.routes import (
+    municipalities, financial, demographics, scores,
+    trends, benchmark, geodata, reports, nlquery,
+)
 from app.core.config import settings
 
 app = FastAPI(
@@ -22,6 +25,11 @@ app.include_router(municipalities.router, prefix="/api/v1/municipalities", tags=
 app.include_router(financial.router, prefix="/api/v1/financial", tags=["Financial Data"])
 app.include_router(demographics.router, prefix="/api/v1/demographics", tags=["Demographics"])
 app.include_router(scores.router, prefix="/api/v1/scores", tags=["Composite Scores"])
+app.include_router(trends.router, prefix="/api/v1/trends", tags=["Trends & Forecasting"])
+app.include_router(benchmark.router, prefix="/api/v1/benchmark", tags=["Benchmarking"])
+app.include_router(geodata.router, prefix="/api/v1/geo", tags=["Geodata"])
+app.include_router(reports.router, prefix="/api/v1/reports", tags=["Reports"])
+app.include_router(nlquery.router, prefix="/api/v1/query", tags=["Natural Language Query"])
 
 
 @app.get("/api/v1/health")

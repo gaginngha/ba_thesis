@@ -85,7 +85,7 @@ export default function HomePage() {
       </section>
 
       {/* Feature Cards */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <Link href="/rankings" className="bg-white rounded-lg border p-6 hover:shadow-md transition">
           <h3 className="text-lg font-semibold mb-2">Rankings</h3>
           <p className="text-gray-600 text-sm">
@@ -104,10 +104,22 @@ export default function HomePage() {
             Interactive choropleth map showing any metric across all Swiss municipalities with drill-down.
           </p>
         </Link>
-        <div className="bg-white rounded-lg border p-6 opacity-60">
+        <Link href="/trends" className="bg-white rounded-lg border p-6 hover:shadow-md transition">
           <h3 className="text-lg font-semibold mb-2">Trend Analysis</h3>
           <p className="text-gray-600 text-sm">
             Time series analysis with trend detection, forecasting, and anomaly alerts for each municipality.
+          </p>
+        </Link>
+        <Link href="/query" className="bg-white rounded-lg border p-6 hover:shadow-md transition">
+          <h3 className="text-lg font-semibold mb-2">Natural Language Query</h3>
+          <p className="text-gray-600 text-sm">
+            Ask questions in plain English or German — &quot;Top 10 municipalities in Zürich by financial health&quot;.
+          </p>
+        </Link>
+        <div className="bg-white rounded-lg border p-6">
+          <h3 className="text-lg font-semibold mb-2">PDF Reports</h3>
+          <p className="text-gray-600 text-sm">
+            Generate comprehensive municipality profile reports with scores, financials, and demographics.
           </p>
         </div>
       </section>

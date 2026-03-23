@@ -23,6 +23,12 @@ scikit-learn==1.6.0
 statsmodels==0.14.4
 scipy==1.14.1
 
+# PDF generation
+reportlab==4.2.5
+
+# Geospatial
+shapely==2.0.6
+
 # Utilities
 python-dotenv==1.0.1
 loguru==0.7.3

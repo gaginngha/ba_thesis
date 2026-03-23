@@ -61,6 +61,39 @@ export interface TimeSeriesPoint {
   value: number | null;
 }
 
+export interface TrendResult {
+  direction: string;
+  slope: number;
+  r_squared: number;
+  confidence: number;
+}
+
+export interface ForecastPoint {
+  year: number;
+  predicted_value: number;
+  confidence: number;
+}
+
+export interface ForecastResponse {
+  metric: string;
+  municipality_bfs: number;
+  historical: { year: number; value: number | null }[];
+  trend: TrendResult;
+  forecast: ForecastPoint[];
+  anomalies: { year: number; value: number }[];
+}
+
+export interface PeerGroupBenchmark {
+  municipality: { bfs_number: number; name: string; canton: string; population: number | null };
+  peer_group: string;
+  peer_group_size: number;
+  scores: Record<string, number | null>;
+  peer_group_avg: Record<string, number | null>;
+  peer_group_median: Record<string, number | null>;
+  percentile_rank: Record<string, number | null>;
+  top_5_peers: { municipality_bfs: number; name: string; canton: string; composite_score: number }[];
+}
+
 export const api = {
   municipalities: {
     list: (params?: Record<string, string>) =>
@@ -85,5 +118,17 @@ export const api = {
       fetchAPI<CompositeScore[]>("/scores/rankings", params),
     get: (bfs: number) =>
       fetchAPI<CompositeScore[]>(`/scores/${bfs}`),
+  },
+  trends: {
+    forecast: (bfs: number, metric: string, years?: number) =>
+      fetchAPI<ForecastResponse>(`/trends/${bfs}/forecast/${metric}`, years ? { forecast_years: years.toString() } : undefined),
+  },
+  benchmark: {
+    peerGroup: (bfs: number, year?: number) =>
+      fetchAPI<PeerGroupBenchmark>(`/benchmark/${bfs}/peer-group`, year ? { year: year.toString() } : undefined),
+  },
+  reports: {
+    downloadPdf: (bfs: number) =>
+      `${API_BASE}/api/v1/reports/${bfs}/pdf`,
   },
 };
