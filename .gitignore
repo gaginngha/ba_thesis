@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Environment
+.env
+.env.local
+
+# Data files (large)
+backend/data/raw/*.csv
+backend/data/raw/*.xlsx
+backend/data/raw/*.json
+!backend/data/raw/.gitkeep
+backend/data/processed/*.parquet
+backend/data/processed/*.csv
+!backend/data/processed/.gitkeep
+
+# Node
+node_modules/
+frontend/.next/
+frontend/out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+pgdata/
+
+# Test / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
